@@ -32,6 +32,7 @@ sources.forEach(function(source){
         minedData.push({
           phrase: text
         , url: $(this).attr('href')
+        , multisentence: countSentences(text) > 1
         })
       })
 
@@ -67,7 +68,13 @@ function removePunctuationFromEnd(str) {
   return str.replace(/[^\w]$/i, '')
 }
 
+// Count number of sentences in phrase
+// Take in account that last sentence has no closing sign
+function countSentences(str) {
+  var match = str.match(/[\!\?\.]/ig)
+  return match ? match.length : 1;
+}
+
 // TODO limit by day (today or today an tomorrow)
 // TODO add more sources
 // TODO normalize diacritics
-// TODO mark prhases with multiple propositions
