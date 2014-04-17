@@ -8,6 +8,7 @@
     "url": "https://github.com/9-volt/rima-zilei.git"
   },
   "devDependencies": {
-    "oauth": "~0.9.11"
+    "cheerio": "~0.15.0",
+    "request": "~2.34.0"
   }
 }
