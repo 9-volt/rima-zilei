@@ -27,6 +27,7 @@ sources.forEach(function(source){
         var text = $(this).text()
         text = removeTitleDescriptor(text)
         text = text.trim()
+        text = removePunctuationFromEnd(text)
 
         minedData.push({
           phrase: text
@@ -61,8 +62,12 @@ function removeTitleDescriptor(str) {
   return str.replace(/^\([\w\s\,]+\)\s+/i, '')
 }
 
+// Remove punctuation signs from the end of phrase
+function removePunctuationFromEnd(str) {
+  return str.replace(/[^\w]$/i, '')
+}
+
 // TODO limit by day (today or today an tomorrow)
 // TODO add more sources
 // TODO normalize diacritics
-// TODO remove punctuation signs from the end of phrase
 // TODO mark prhases with multiple propositions
