@@ -24,8 +24,12 @@ sources.forEach(function(source){
 
       $ = cheerio.load(body);
       $(source.query).each(function(index, element){
+        var text = $(this).text()
+        text = removeTitleDescriptor(text)
+        text = text.trim()
+
         minedData.push({
-          phrase: $(this).text()
+          phrase: text
         , url: $(this).attr('href')
         })
       })
@@ -52,20 +56,13 @@ function finishSource() {
   }
 }
 
-var urlRegex = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ig;
-function extractLink(str) {
-  var match = str.match(urlRegex)
-
-  if (match && match.length > 0) return match[0];
-  return '';
+// Remove descriptors from the beginning (ex. (video))
+function removeTitleDescriptor(str) {
+  return str.replace(/^\([\w\s\,]+\)\s+/i, '')
 }
 
 // TODO limit by day (today or today an tomorrow)
 // TODO add more sources
-// TODO remove tags
-// TODO parse links
-// TODO remove descriptors from the beginning (ex. (video))
 // TODO normalize diacritics
 // TODO remove punctuation signs from the end of phrase
 // TODO mark prhases with multiple propositions
-*/
