@@ -1,0 +1,13 @@
+{
+  "name": "9volt-rima-zilei",
+  "version": "1.0.0",
+  "description": "9volt rima zilei",
+  "author": "9vo.lt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/9-volt/rima-zilei.git"
+  },
+  "devDependencies": {
+    "oauth": "~0.9.11"
+  }
+}
