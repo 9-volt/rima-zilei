@@ -40,7 +40,7 @@ oauth.get(
       if(err) {
         console.log(err);
       } else {
-        console.log("JSON saved to " + outputFilename);
+        console.log("JSON saved to data_mined.json");
       }
     });
   }
